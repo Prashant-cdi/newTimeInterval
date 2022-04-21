@@ -1,0 +1,35 @@
+.maindiv{
+        display: flex;
+        justify-content: space-evenly;
+        margin: 50px;
+}
+
+.btndiv{
+    text-align: center;
+}
+
+.threebox{
+    height:200px;
+    width:300px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+    font-size: 30px;
+}
+
+#btnstart{
+    padding: 20px 80px;
+}
+
+#yellow{
+    background-color: yellow;
+}
+
+#red{
+    background-color: red;
+}
+
+#green{
+    background-color: green;
+}
