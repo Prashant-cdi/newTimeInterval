@@ -1,83 +1,31 @@
-i=1;
-check = 0;
-var myInterval;
-
 function start() {
+    document.getElementById('btnstart').innerHTML = "Stop";
 
-    let val = document.getElementById("btnstart").innerHTML;
 
-    if(val=="Start"){
+    function two(){
 
-        document.getElementById("btnstart").innerHTML="Stop";
+        let promise1 = new Promise( function ( resolve,reject ) {
 
-        function boxColor(id){
 
-             myInterval = setInterval(() => {
-                console.log("setInterval is run "+id);
-                document.getElementById(id).innerHTML = i;
-                i++
+            setTimeout(() => {
+                resolve("success");
             }, 1000);
 
-            myTimer = setTimeout(() => {
-                console.log("setTimeout is run " +id);
-                clearInterval(myInterval);
-                check = 1;
-            }, 5000);
+        });
 
-            clearTimeout(myTimer);
-
-            return check;
-
-        }
-
-        async function interval1(){
-            await new Promise((resolve, reject) => {
-                if(boxColor("yellow") == 1)
-                {
-                    resolve(true);  
-                }
-            }
-            );
-            
-        }
-       
-        async function interval2(){
-            await new Promise((resolve, reject) => resolve(boxColor("green")));
-        }
-
-        async function interval3(){
-            await new Promise((resolve, reject) => resolve(boxColor("red")));
-        }
-
-        interval1().then(
-            interval2().then(
-                interval3().then(
-                    val="Start"
-                )
-            )
-        );
-
+        return promise1;
     }
 
-    else{
-        if(document.getElementById("btnstart").innerHTML == "Stop"){
 
-            document.getElementById("btnstart").innerHTML = "Start";
-            stopTime();
-            
-        }
+    async function one(){
 
-    }
-
-    function stopTime(){
-
-        clearInterval(myInterval);
-
-        document.getElementById("yellow").innerHTML = "1";
-
-        document.getElementById("green").innerHTML = "1";
-
-        document.getElementById("red").innerHTML = "1";
+        console.log("one is running");
+        let result1 = await two();
+        console.log(result1);
+        console.log("two is running");
 
     }
+    
+    one();
+
 }
